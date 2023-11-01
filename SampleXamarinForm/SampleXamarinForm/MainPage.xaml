@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleXamarinForm.MainPage" Title="Main Page">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Search" IconImageSource="search.png" />
+        <ToolbarItem x:Name="tbAdd" Text="Add" Order="Secondary" /> 
+        <ToolbarItem x:Name="tbDelete" Text="Delete" Order="Secondary" />
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Learning Xamarin Forms" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+            <StackLayout>
+            <Entry x:Name="entryEmployeeID" Placeholder="Employee ID" />
+            <Entry x:Name="entryBahasa" Placeholder="Bahasa" />
+
+            <ScrollView Orientation="Horizontal">
+
+                <StackLayout Orientation="Horizontal">
+                <Button x:Name="btnListObject" Text="List Object" />
+            <Button x:Name="btnCustomList" Text="Custom List" />
+                <Button x:Name="btnSetPreference" Text="Set Preference" />
+                <Button x:Name="btnClearPreference" Text="Clear Preference" />
+            </StackLayout>
+        </ScrollView>
+            
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="btnSetGlobal" Text="Set Global" />
+
+            </StackLayout>
+        </StackLayout>
+        
+        
+        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
+        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
+        <Label FontSize="16" Padding="30,24,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Learn more at "/>
+                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+</ContentPage>
+

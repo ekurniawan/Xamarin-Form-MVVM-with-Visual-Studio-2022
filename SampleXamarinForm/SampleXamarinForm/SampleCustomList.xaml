@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SampleXamarinForm.SampleCustomList" Title="Custom List">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button x:Name="btnCek" Text="Cek Employee ID" />
+            <Button x:Name="btnCekPreference" Text="Cek Bahasa" />
+            <ListView x:Name="lvEmployee" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="{Binding Picture}" WidthRequest="100"
+                                   HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" />
+                            <Label Text="{Binding Name}" FontSize="Large"
+                                   FontAttributes="Bold" Grid.Row="0" Grid.Column="1" />
+                            <Label Text="{Binding Address}" FontSize="Medium"
+                                   TextColor="Orange" Grid.Row="1" Grid.Column="1" />
+                            <StackLayout Orientation="Horizontal" Grid.Row="2"
+                                         Grid.Column="1">
+                                <Label Text="{Binding Phone}" /> 
+                                <Label Text="{Binding Email}" />
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
+

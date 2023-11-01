@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleXamarinForm.MyTabbedPage" Title="My Tabbed Page"
+             xmlns:local="clr-namespace:SampleXamarinForm"
+             >
+  <!--Pages can be added as references or inline-->
+  <ContentPage Title="Tab 1" >
+        <Label Text="Tabbed Page 1" FontSize="Large"/>
+    </ContentPage>
+  <local:SampleBindingList Title="Binding List" IconImageSource="search.png" />
+  <local:SampleCustomList Title="Custom List" />
+  <ContentPage Title="Tab 3" />
+</TabbedPage>
