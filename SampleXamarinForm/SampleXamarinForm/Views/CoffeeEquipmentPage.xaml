@@ -3,20 +3,33 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodels="clr-namespace:SampleXamarinForm.ViewModels"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Class="SampleXamarinForm.Views.CoffeeEquipmentPage" Title="{Binding Title}">
     <ContentPage.BindingContext>
         <viewmodels:CoffeeEquipmentViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ListView BackgroundColor="Transparent" HasUnevenRows="True"
+                  IsEnabled="{Binding IsNotBusy,Mode=OneWay}"
                   SeparatorVisibility="None"
+                  IsPullToRefreshEnabled="True"
+                  RefreshControlColor="DeepPink"
+                  IsRefreshing="{Binding IsBusy,Mode=OneWay}"
+                  RefreshCommand="{Binding RefreshCommand}"
                   ItemsSource="{Binding Coffee}">
+            <ListView.Behaviors>
+                <xct:EventToCommandBehavior EventName="ItemSelected"
+                     Command="{Binding SelectedCommand}"
+                     EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}" />
+            </ListView.Behaviors>
             <ListView.Header>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                     <Label HorizontalTextAlignment="Center" FontSize="Large"
                            Text="List Of Coffee" FontAttributes="Bold"/>
                 </StackLayout>
-                    
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -36,8 +49,12 @@
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
-
             </ListView.ItemTemplate>
+            <ListView.Footer>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Command="{Binding LoadMore}" Text="Load More" />
+                </StackLayout>
+            </ListView.Footer>
         </ListView>
     </ContentPage.Content>
 </ContentPage>
